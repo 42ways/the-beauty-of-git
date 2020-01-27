@@ -23,8 +23,89 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>Slide 1</section>
-        <section>Slide 2</section>
+
+        <section>
+          <div style="position: absolute; width: 40%; left: 0; padding: 0px; font-size: 12px; text-align: center;">
+            <img data-src="https://imgs.xkcd.com/comics/git.png">
+            <a href="https://imgs.xkcd.com/comics/git.png">https://imgs.xkcd.com/comics/git.png</a>
+          </div>
+          <div style="position: absolute; width: 50%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 25px; text-align: right;">
+            <h1>The<br/>beauty<br/>of<br/>git</h1>
+            <h3>Thomas Herrmann</h3>
+            <p><a href="mailto:thomas@42ways.de">thomas@42ways.de</a></p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Characteristics</h2>
+          <p>content addressed</p>
+          <p>distributed</p>
+          <p>reliable</p>
+          <p>simple</p>
+          <p>fast</p>
+        </section>
+
+        <section>
+          <h2>Core concepts</h2>
+          <p>repository</p>
+          <p>staging area</p>
+          <p>worktree</p>
+        </section>
+
+        <section>
+          <h2>Core concepts</h2>
+          <p>objects</p>
+          <p>references</p>
+        </section>
+
+        <section>
+          <section>
+            <h2>Objects</h2>
+            <p>blobs</p>
+            <p>trees</p>
+            <p>commits</p>
+            <p>(annotated) tags</p>
+          </section>
+          <section>
+            <h2>blobs</h2>
+          </section>
+          <section>
+            <h2>trees</h2>
+          </section>
+          <section>
+            <h2>commits</h2>
+          </section>
+          <section>
+            <h2>(annotated) tags</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>References</h2>
+            <p>branches</p>
+            <p>(simple) tags</p>
+            <p>HEAD</p>
+          </section>
+          <section>
+            <h2>branches</h2>
+          </section>
+          <section>
+            <h2>(simple) tags</h2>
+          </section>
+          <section>
+            <h2>HEAD</h2>
+          </section>
+        </section>
+
+        <section>
+          <h2>Further reading, listening and watching</h2>
+          <p>Official git website (includes Pro Git book)
+            <a href="https://git-scm.com/">https://git-scm.com/</a></p>
+          <p>Tech Talk: Linus Torvalds on git
+            <a href="https://youtu.be/4XpnKHJAok8">https://youtu.be/4XpnKHJAok8</a></p>
+        </section>
+
       </div>
     </div>
 
@@ -32,6 +113,9 @@
 
     <script>
       Reveal.initialize({
+        width: 960,
+	height: 600,
+        slideNumber: true,
         hash: true,
         dependencies: [
           { src: 'plugin/highlight/highlight.js' },
