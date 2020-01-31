@@ -1,0 +1,41 @@
+$ #===== TIME TO ACTUALLY RELEASE OUR SYSTEM
+$ git tag -m 'GO PRODUCTON!' v1.0 master
+$ find .git/objects
+.git/objects
+.git/objects/59
+.git/objects/59/8a2628e0ecb97910b7cd87d5b95502a0cb4682
+.git/objects/51
+.git/objects/51/b9455f1e0a81f23b3727bbd015627a832427d1
+.git/objects/pack
+.git/objects/89
+.git/objects/89/0ab9e1af68593b6e8f38ac633b5709eb1afd0b
+.git/objects/80
+.git/objects/80/962ef58c63bb5f1a65c89242ae94989c87266b
+.git/objects/2f
+.git/objects/2f/dd7df0dec3b7768f584a1915d4591fb66788c1
+.git/objects/07
+.git/objects/07/4542f631683ec989827c2ba4f33fc4d83a1bbe
+.git/objects/5d
+.git/objects/5d/d01c177f5d7d1be5346a5bc18a569a7410c2ef
+.git/objects/info
+.git/objects/65
+.git/objects/65/5a5fb67b1300d837c3944680c0bbdf97f146a0
+.git/objects/62
+.git/objects/62/afa1f98848930276b9bf1143ab6c5b054465ea
+.git/objects/97
+.git/objects/97/29547021cb1e80b137cd41aa31416da91a717a
+.git/objects/64
+.git/objects/64/b224c76d1ee8775e8635728995bc7da5ffbb99
+.git/objects/de
+.git/objects/de/a62496c46168a013d68914ed194ae024468398
+.git/objects/82
+.git/objects/82/d73d56d5b5248d2eda35be9354c375a14fa697
+$ find .git/refs
+.git/refs
+.git/refs/heads
+.git/refs/heads/master
+.git/refs/heads/refactoring
+.git/refs/tags
+.git/refs/tags/v0.2
+.git/refs/tags/v1.0
+.git/refs/tags/v0.1

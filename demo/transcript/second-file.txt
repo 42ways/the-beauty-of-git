@@ -1,0 +1,37 @@
+$ #===== CREATE SECOND FILE
+$ echo 'Goodbye and au revoir'
+$ git add bye.txt
+$ git commit -m 'auf wiedersehen'
+[master 9729547] auf wiedersehen
+ 1 file changed, 1 insertion(+)
+ create mode 100644 bye.txt
+$ git tag v0.2
+$ find .git/objects
+.git/objects
+.git/objects/51
+.git/objects/51/b9455f1e0a81f23b3727bbd015627a832427d1
+.git/objects/pack
+.git/objects/89
+.git/objects/89/0ab9e1af68593b6e8f38ac633b5709eb1afd0b
+.git/objects/80
+.git/objects/80/962ef58c63bb5f1a65c89242ae94989c87266b
+.git/objects/5d
+.git/objects/5d/d01c177f5d7d1be5346a5bc18a569a7410c2ef
+.git/objects/info
+.git/objects/65
+.git/objects/65/5a5fb67b1300d837c3944680c0bbdf97f146a0
+.git/objects/97
+.git/objects/97/29547021cb1e80b137cd41aa31416da91a717a
+.git/objects/64
+.git/objects/64/b224c76d1ee8775e8635728995bc7da5ffbb99
+.git/objects/de
+.git/objects/de/a62496c46168a013d68914ed194ae024468398
+.git/objects/82
+.git/objects/82/d73d56d5b5248d2eda35be9354c375a14fa697
+$ find .git/refs
+.git/refs
+.git/refs/heads
+.git/refs/heads/master
+.git/refs/tags
+.git/refs/tags/v0.2
+.git/refs/tags/v0.1

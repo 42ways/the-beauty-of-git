@@ -1,0 +1,10 @@
+$ #===== ADD FIRST FILE
+$ echo -en 'blob 13\0Hello, world!' | shasum
+5dd01c177f5d7d1be5346a5bc18a569a7410c2ef  -
+$ git add hello.txt
+$ find .git/objects
+.git/objects
+.git/objects/pack
+.git/objects/5d
+.git/objects/5d/d01c177f5d7d1be5346a5bc18a569a7410c2ef
+.git/objects/info
