@@ -1,18 +1,12 @@
 $ #===== COMMIT FIRST FILE
 $ git commit -m 'created hello.txt'
-[master (root-commit) 655a5fb] created hello.txt
+[master (root-commit) 69803c6] created hello.txt
  1 file changed, 1 insertion(+)
  create mode 100644 hello.txt
-$ find .git/objects
-.git/objects
-.git/objects/pack
-.git/objects/89
-.git/objects/89/0ab9e1af68593b6e8f38ac633b5709eb1afd0b
-.git/objects/5d
-.git/objects/5d/d01c177f5d7d1be5346a5bc18a569a7410c2ef
-.git/objects/info
-.git/objects/65
-.git/objects/65/5a5fb67b1300d837c3944680c0bbdf97f146a0
+$ find .git/objects -d 2
+.git/objects/69/803c6b4180c0d9b7d5467ee6bbdcc8b952e92b
+.git/objects/ec/947e3dd7a7752d078f1ed0cfde7457b21fef58
+.git/objects/af/5626b4a114abcb82d63db7c8082c3c4756e51b
 $ find .git/refs
 .git/refs
 .git/refs/heads

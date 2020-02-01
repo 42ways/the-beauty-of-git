@@ -34,12 +34,13 @@ echo "+ #===== CREATE FIRST FILE"
 DATE="Wed Jan 15 08:15:20 CET 2020"
 export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
-echo "+ echo -n 'Hello, world!' > hello.txt"
-echo -n 'Hello, world!' > hello.txt
-echo "+ echo -en 'blob 13\0Hello, world!' | shasum"
-echo -en 'blob 13\0Hello, world!' | shasum
+echo "+ echo 'Hello, world!' > hello.txt"
+echo 'Hello, world!' > hello.txt
+echo "+ echo -e 'blob 14\0Hello, world!' | shasum"
+echo -e 'blob 14\0Hello, world!' | shasum
 set -x
 find .git/objects
+find .git/refs
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
@@ -49,11 +50,12 @@ echo "+ #===== ADD FIRST FILE"
 DATE="Wed Jan 15 08:45:19 CET 2020"
 export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
-echo "+ echo -en 'blob 13\0Hello, world!' | shasum"
-echo -en 'blob 13\0Hello, world!' | shasum
+echo "+ echo -e 'blob 14\0Hello, world!' | shasum"
+echo -e 'blob 14\0Hello, world!' | shasum
 set -x
 git add hello.txt
 find .git/objects
+find .git/refs
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
@@ -65,7 +67,7 @@ export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
 git commit -m 'created hello.txt'
-find .git/objects
+find .git/objects -d 2
 find .git/refs
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
@@ -76,12 +78,13 @@ echo "+ #===== CHANGE FILE"
 DATE="Fri Jan 17 12:36:54 CET 2020"
 export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
-set -x
-echo >> hello.txt
+echo "+ echo 'Happy to see you!' >> hello.txt"
 echo 'Happy to see you!' >> hello.txt
+set -x
 git add hello.txt
 git commit -m 'extended hello'
-find .git/objects
+find .git/objects -d 2
+find .git/refs -d 2
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
@@ -93,8 +96,8 @@ export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
 git tag 'v0.1'
-find .git/objects
-find .git/refs
+find .git/objects -d 2
+find .git/refs -d 2
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
@@ -104,25 +107,27 @@ echo "+ #===== CREATE SECOND FILE"
 DATE="Tue Jan 21 12:34:56 CET 2020"
 export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
-set -x
+echo "+ echo 'Goodbye and au revoir' > bye.txt"
 echo 'Goodbye and au revoir' > bye.txt
+set -x
 git add bye.txt
 git commit -m 'auf wiedersehen'
 git tag 'v0.2'
-find .git/objects
-find .git/refs
+find .git/objects -d 2
+find .git/refs -d 2
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
 step=second-branch
 (
-echo "+ #===== CREATE ANOTHER BRANCH"
+echo "+ #===== CREATE REFACTORING BRANCH"
 DATE="Fri Jan 24 09:10:11 CET 2020"
 export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
 git checkout -b refactoring
-find .git/objects
+find .git/objects -d 2
+find .git/refs -d 2
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
@@ -138,7 +143,8 @@ git mv hello.txt happy
 cp happy/hello.txt happy/welcome-back.txt
 git add happy/welcome-back.txt
 git commit -m "be happy"
-find .git/objects
+find .git/objects -d 2
+find .git/refs -d 2
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
@@ -150,8 +156,8 @@ export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
 git tag -m 'GO PRODUCTON!' 'v1.0' master
-find .git/objects
-find .git/refs
+find .git/objects -d 2
+find .git/refs -d 2
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
