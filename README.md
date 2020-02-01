@@ -1,7 +1,7 @@
 # The beauty of git
 Short presentation about the concepts and internals of git, e.g. object types, trees, content-addressable etc.
 
-## setup of demo
+## Setup of demo
 
 The subdir `demo` contains a setup script `setup-demo.sh` that can be used to create the demo git
 repository `demo/repo`, the shell fragments `demo/transcript/*.shell` and the presentation images
