@@ -19,10 +19,12 @@ cd repo
 step=init
 (
 echo "+ #===== INITIALIZE EMPTY REPOSITORY"
+cd ..
 set -x
-git init
+git init repo
+cd repo
 ls -p .git
-) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
+) 2>&1 | sed -e 's/^+ /$ /' -e 's#/.*/repo#/.../repo#' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
 git config --local user.name "T.H."
@@ -41,7 +43,7 @@ echo -e 'blob 14\0Hello, world!' | shasum
 set -x
 find .git/objects
 find .git/refs
-) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
+) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
 step=first-add
@@ -56,7 +58,7 @@ set -x
 git add hello.txt
 find .git/objects
 find .git/refs
-) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
+) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
 step=first-commit
@@ -69,7 +71,7 @@ set -x
 git commit -m 'created hello.txt'
 find .git/objects -d 2
 find .git/refs
-) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
+) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
 step=change-first-file
@@ -84,7 +86,7 @@ set -x
 git hash-object hello.txt
 find .git/objects -d 2
 find .git/refs -d 2
-) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
+) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
 step=add-change-first
@@ -97,7 +99,7 @@ set -x
 git update-index hello.txt
 find .git/objects -d 2
 find .git/refs -d 2
-) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
+) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
 step=commit-change-first
@@ -110,7 +112,7 @@ set -x
 git commit -m 'extended hello'
 find .git/objects -d 2
 find .git/refs -d 2
-) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
+) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
 step=first-tag
@@ -123,7 +125,7 @@ set -x
 git tag 'v0.1'
 find .git/objects -d 2
 find .git/refs -d 2
-) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
+) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
 step=second-file
@@ -140,7 +142,7 @@ git commit -m 'auf wiedersehen'
 git tag 'v0.2'
 find .git/objects -d 2
 find .git/refs -d 2
-) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
+) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
 step=second-branch
@@ -153,7 +155,7 @@ set -x
 git checkout -b refactoring
 find .git/objects -d 2
 find .git/refs -d 2
-) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
+) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
 step=refactoring-done
@@ -170,7 +172,7 @@ git add happy/welcome-back.txt
 git commit -m "be happy"
 find .git/objects -d 2
 find .git/refs -d 2
-) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
+) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
 step=production-tag
@@ -183,8 +185,18 @@ set -x
 git tag -m 'GO PRODUCTON!' 'v1.0' master
 find .git/objects -d 2
 find .git/refs -d 2
-) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
+) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
+
+step=final-log
+(
+echo "+ #===== LOG WHAT WE HAVE ACHIEVED"
+DATE="Mon Jan 27 12:34:56 CET 2020"
+export GIT_AUTHOR_DATE=${DATE}
+export GIT_COMMITTER_DATE=${DATE}
+set -x
+git log --oneline
+) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 
 ) 2>&1 | tee setup-repo.log
 

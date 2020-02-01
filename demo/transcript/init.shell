@@ -1,6 +1,7 @@
 $ #===== INITIALIZE EMPTY REPOSITORY
-$ git init
-Initialized empty Git repository in /Users/thomas/Development/42ways/the-beauty-of-git/demo/repo/.git/
+$ git init repo
+Initialized empty Git repository in /.../repo/.git/
+$ cd repo
 $ ls -p .git
 HEAD
 config
