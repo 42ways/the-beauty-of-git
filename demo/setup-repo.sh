@@ -67,7 +67,7 @@ export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
 git commit -m 'created hello.txt'
-find .git/objects -d 2
+find .git/objects -type f
 find .git/refs
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
@@ -83,8 +83,8 @@ echo 'Happy to see you!' >> hello.txt
 set -x
 git add hello.txt
 git commit -m 'extended hello'
-find .git/objects -d 2
-find .git/refs -d 2
+find .git/objects -type f
+find .git/refs -type f
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
@@ -96,8 +96,8 @@ export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
 git tag 'v0.1'
-find .git/objects -d 2
-find .git/refs -d 2
+find .git/objects -type f
+find .git/refs -type f
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
@@ -113,8 +113,8 @@ set -x
 git add bye.txt
 git commit -m 'auf wiedersehen'
 git tag 'v0.2'
-find .git/objects -d 2
-find .git/refs -d 2
+find .git/objects -type f
+find .git/refs -type f
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
@@ -126,8 +126,8 @@ export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
 git checkout -b refactoring
-find .git/objects -d 2
-find .git/refs -d 2
+find .git/objects -type f
+find .git/refs -type f
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
@@ -143,8 +143,8 @@ git mv hello.txt happy
 cp happy/hello.txt happy/welcome-back.txt
 git add happy/welcome-back.txt
 git commit -m "be happy"
-find .git/objects -d 2
-find .git/refs -d 2
+find .git/objects -type f
+find .git/refs -type f
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
@@ -156,8 +156,8 @@ export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
 git tag -m 'GO PRODUCTON!' 'v1.0' master
-find .git/objects -d 2
-find .git/refs -d 2
+find .git/objects -type f
+find .git/refs -type f
 ) 2>&1 | sed -e 's/^+ /$ /'| tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 

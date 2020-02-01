@@ -8,7 +8,7 @@ $ git commit -m 'be happy'
  2 files changed, 2 insertions(+)
  rename hello.txt => happy/hello.txt (100%)
  create mode 100644 happy/welcome-back.txt
-$ find .git/objects -d 2
+$ find .git/objects -type f
 .git/objects/59/8a2628e0ecb97910b7cd87d5b95502a0cb4682
 .git/objects/69/803c6b4180c0d9b7d5467ee6bbdcc8b952e92b
 .git/objects/56/a1b41c6b84e1dbe906ad247d41fd4c3799563f
@@ -21,7 +21,7 @@ $ find .git/objects -d 2
 .git/objects/af/5626b4a114abcb82d63db7c8082c3c4756e51b
 .git/objects/c2/2d27bbc0d0b5584abd6de2a69d350c8f4c9805
 .git/objects/82/d73d56d5b5248d2eda35be9354c375a14fa697
-$ find .git/refs -d 2
+$ find .git/refs -type f
 .git/refs/heads/master
 .git/refs/heads/refactoring
 .git/refs/tags/v0.2
