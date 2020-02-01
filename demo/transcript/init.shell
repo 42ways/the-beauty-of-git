@@ -1,0 +1,11 @@
+$ #===== INITIALIZE EMPTY REPOSITORY
+$ git init
+Initialized empty Git repository in /Users/thomas/Development/42ways/the-beauty-of-git/demo/repo/.git/
+$ ls -p .git
+HEAD
+config
+description
+hooks/
+info/
+objects/
+refs/

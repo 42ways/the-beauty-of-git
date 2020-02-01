@@ -29,8 +29,9 @@
             <img data-src="img/git.png">
             <a class="explicit-link">https://xkcd.com/1597/</a>
           </div>
-          <div style="position: absolute; width: 50%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 25px; text-align: right;">
+          <div style="position: absolute; width: 50%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 15px; font-size: 25px; text-align: right;">
             <h1>The<br/>beauty<br/>of<br/>git</h1>
+            <p>&nbsp;</p>
             <h3>Thomas Herrmann</h3>
             <p><a href="mailto:thomas@42ways.de">thomas@42ways.de</a></p>
           </div>
@@ -108,7 +109,7 @@
 
         <section>
           <section>
-            <pre><code class="shell" data-sample="demo/transcript/init.txt"></code></pre>
+            <pre><code class="shell" data-sample="demo/transcript/init.shell"></code></pre>
           </section>
           <section>
             <img src="demo/img/init.png"/>
@@ -117,19 +118,82 @@
 
         <section>
           <section>
-            <pre><code class="shell">
-$ #===== CREATE FIRST FILE
-$ echo -n 'Hello, world!' > hello.txt
-$ echo -en 'blob 13\0Hello, world!' | shasum
-5dd01c177f5d7d1be5346a5bc18a569a7410c2ef  -
-$ find .git/objects
-.git/objects
-.git/objects/pack
-.git/objects/info
-</code></pre>
+            <pre><code class="shell" data-sample="demo/transcript/first-file.shell"></code></pre>
           </section>
           <section>
             <img src="demo/img/first-file.png"/>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <pre><code class="shell" data-sample="demo/transcript/first-add.shell"></code></pre>
+          </section>
+          <section>
+            <img src="demo/img/first-add.png"/>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <pre><code class="shell" data-sample="demo/transcript/first-commit.shell"></code></pre>
+          </section>
+          <section>
+            <img src="demo/img/first-commit.png"/>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <pre><code class="shell" data-sample="demo/transcript/second-commit.shell"></code></pre>
+          </section>
+          <section>
+            <img src="demo/img/second-commit.png"/>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <pre><code class="shell" data-sample="demo/transcript/first-tag.shell"></code></pre>
+          </section>
+          <section>
+            <img src="demo/img/first-tag.png"/>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <pre><code class="shell" data-sample="demo/transcript/second-file.shell"></code></pre>
+          </section>
+          <section>
+            <img src="demo/img/second-file.png"/>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <pre><code class="shell" data-sample="demo/transcript/second-branch.shell"></code></pre>
+          </section>
+          <section>
+            <img src="demo/img/second-branch.png"/>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <pre><code class="shell" data-sample="demo/transcript/refactoring-done.shell"></code></pre>
+          </section>
+          <section>
+            <img src="demo/img/refactoring-done.png"/>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <pre><code class="shell" data-sample="demo/transcript/production-tag.shell"></code></pre>
+          </section>
+          <section>
+            <img src="demo/img/production-tag.png"/>
           </section>
         </section>
 
@@ -163,9 +227,9 @@ $ find .git/objects
         slideNumber: true,
         hash: true,
         dependencies: [
+          { src: 'plugin/highlight/highlight.js' },
           { src: 'plugin/explicit-link/explicit-link.js' },
           { src: 'plugin/sampler/sampler.js' },
-          { src: 'plugin/highlight/highlight.js' },
           { src: 'plugin/notes/notes.js', async: true }
         ]
       });
