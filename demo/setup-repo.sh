@@ -226,8 +226,8 @@ set -x
 git init repo2
 cd repo2
 set +x
-git config --local user.name "T.H." > /dev/null 2>&1
-git config --local user.email "thomas@42ways.de" > /dev/null 2>&1
+git config --local user.name "thomas" > /dev/null 2>&1
+git config --local user.email "mail@thoherr.de" > /dev/null 2>&1
 set +x
 echo "+ echo 'Hello, world!' > hello.txt"
 echo 'Hello, world!' > hello.txt
@@ -286,11 +286,12 @@ create_img ../img2/${step}.png --hide-commitcontent
 
 step=gc
 (
-echo "+ #===== COLLECT OUR GARBAGE"
+echo "+ #===== BACK TO MASTER AND COLLECT OUR GARBAGE"
 DATE="Wed Feb 02 01:23:45 CET 2020"
 export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
+git checkout master
 git gc
 ) 2>&1 | sed -e '/+ set +x/d' -e 's/^+ /$ /' | tee ../transcript2/${step}.shell
 create_img ../img2/${step}.png --hide-commitcontent
@@ -303,7 +304,7 @@ export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
 git reflog
-git reflog delete --rewrite 'HEAD@{6}' 'HEAD@{3}'
+git reflog delete --rewrite 'HEAD@{7}' 'HEAD@{4}'
 git reflog delete --rewrite refs/heads/feature/bright-future@{1}
 git gc
 ) 2>&1 | sed -e '/+ set +x/d' -e 's/^+ /$ /' | tee ../transcript2/${step}.shell
@@ -327,8 +328,40 @@ DATE="Wed Feb 02 11:22:44 CET 2020"
 export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
-git checkout master
 git merge feature/bright-future
+) 2>&1 | sed -e '/+ set +x/d' -e 's/^+ /$ /' | tee ../transcript2/${step}.shell
+create_img ../img2/${step}.png --hide-commitcontent
+
+step=fetch-the-other-repo
+(
+echo "+ #===== FETCH EVERYTHING FROM THE FIRST DEMO"
+DATE="Wed Feb 02 20:20:20 CET 2020"
+export GIT_AUTHOR_DATE=${DATE}
+export GIT_COMMITTER_DATE=${DATE}
+set -x
+git fetch ../repo
+) 2>&1 | sed -e '/+ set +x/d' -e 's/^+ /$ /' | tee ../transcript2/${step}.shell
+create_img ../img2/${step}.png --hide-commitcontent
+
+step=awake-the-other-repo
+(
+echo "+ #===== MAKE STUFF FROM FIRST DEMO ACCESSIBLE"
+DATE="Wed Feb 02 21:21:21 CET 2020"
+export GIT_AUTHOR_DATE=${DATE}
+export GIT_COMMITTER_DATE=${DATE}
+set -x
+git branch work-from-the-other-side FETCH_HEAD
+) 2>&1 | sed -e '/+ set +x/d' -e 's/^+ /$ /' | tee ../transcript2/${step}.shell
+create_img ../img2/${step}.png --hide-commitcontent
+
+step=merge-the-other-repo
+(
+echo "+ #===== AND EVEN MERGE THE MAKE STUFF FROM FIRST DEMO"
+DATE="Wed Feb 02 22:22:22 CET 2020"
+export GIT_AUTHOR_DATE=${DATE}
+export GIT_COMMITTER_DATE=${DATE}
+set -x
+git merge --allow-unrelated-histories -s recursive -X ours -m 'merge it' work-from-the-other-side
 ) 2>&1 | sed -e '/+ set +x/d' -e 's/^+ /$ /' | tee ../transcript2/${step}.shell
 create_img ../img2/${step}.png --hide-commitcontent
 

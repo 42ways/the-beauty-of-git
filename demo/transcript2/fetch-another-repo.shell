@@ -1,0 +1,5 @@
+$ #===== FETCH EVERYTHING FROM THE FIRST DEMO
+$ git fetch ../repo
+warning: no common commits
+From ../repo
+ * branch            HEAD       -> FETCH_HEAD

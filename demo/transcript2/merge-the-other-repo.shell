@@ -1,0 +1,10 @@
+$ #===== AND EVEN MERGE THE MAKE STUFF FROM FIRST DEMO
+$ git merge --allow-unrelated-histories -s recursive -X ours -m 'merge it' work-from-the-other-side
+CONFLICT (add/add): Merge conflict in bye.txt
+Auto-merging bye.txt
+Merge made by the 'recursive' strategy.
+ happy/hello.txt        | 2 ++
+ happy/welcome-back.txt | 2 ++
+ 2 files changed, 4 insertions(+)
+ create mode 100644 happy/hello.txt
+ create mode 100644 happy/welcome-back.txt

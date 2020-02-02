@@ -3,6 +3,6 @@ $ git checkout master
 Switched to branch 'master'
 $ sed -i '' -e 's/ and/, ciao and/' bye.txt
 $ git commit -a -m 'add language'
-[master bc97449] add language
+[master 07e4dc4] add language
  1 file changed, 1 insertion(+), 1 deletion(-)
 $ git tag 0.2

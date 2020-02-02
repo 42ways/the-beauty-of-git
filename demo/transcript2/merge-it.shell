@@ -1,8 +1,6 @@
 $ #===== MERGE OUR BRANCH (IT'S EASY NOW)
-$ git checkout master
-Switched to branch 'master'
 $ git merge feature/bright-future
-Updating bc97449..8bcba46
+Updating 07e4dc4..5038b52
 Fast-forward
  hello.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

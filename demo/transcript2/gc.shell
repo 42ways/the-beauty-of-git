@@ -1,2 +1,4 @@
-$ #===== COLLECT OUR GARBAGE
+$ #===== BACK TO MASTER AND COLLECT OUR GARBAGE
+$ git checkout master
+Switched to branch 'master'
 $ git gc

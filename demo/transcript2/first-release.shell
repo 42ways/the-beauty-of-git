@@ -7,13 +7,13 @@ $ git hash-object hello.txt
 af5626b4a114abcb82d63db7c8082c3c4756e51b
 $ git add hello.txt
 $ git commit -m 'created hello.txt again'
-[master (root-commit) f970c41] created hello.txt again
+[master (root-commit) db5b434] created hello.txt again
  1 file changed, 1 insertion(+)
  create mode 100644 hello.txt
 $ echo 'Goodbye and au revoir' > bye.txt
 $ git add bye.txt
 $ git commit -m 'auf wiedersehen'
-[master af4d80d] auf wiedersehen
+[master 14c3d65] auf wiedersehen
  1 file changed, 1 insertion(+)
  create mode 100644 bye.txt
 $ git tag 0.1
