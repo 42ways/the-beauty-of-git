@@ -1,0 +1,2 @@
+$ #===== ACTUALLY COLLECT OUR GARBAGE
+$ git gc --prune=all

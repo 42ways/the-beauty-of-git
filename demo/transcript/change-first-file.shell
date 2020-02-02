@@ -1,7 +1,7 @@
 $ #===== CHANGE FIRST FILE
-$ echo 'Happy to see you!' >> hello.txt
+$ echo 'Glad to see you!' >> hello.txt
 $ git hash-object hello.txt
-64b224c76d1ee8775e8635728995bc7da5ffbb99
+675a73c53b7600bee5c6836b9b395ca4a418bda5
 $ find .git/objects -d 2
 .git/objects/69/803c6b4180c0d9b7d5467ee6bbdcc8b952e92b
 .git/objects/ec/947e3dd7a7752d078f1ed0cfde7457b21fef58

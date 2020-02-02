@@ -1,6 +1,6 @@
 $ #===== LOG WHAT WE HAVE ACHIEVED
 $ git log --oneline
-184f99b be happy
-c22d27b auf wiedersehen
-56a1b41 extended hello
+7c5a261 be happy
+dc1295f auf wiedersehen
+ac964cd extended hello
 69803c6 created hello.txt

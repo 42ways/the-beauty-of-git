@@ -1,0 +1,6 @@
+$ #===== REBASE OUR FEATURE BRANCH
+$ git checkout feature/bright-future
+Switched to branch 'feature/bright-future'
+$ git rebase master
+First, rewinding head to replay your work on top of it...
+Applying: reworded for clarity

@@ -2,5 +2,6 @@
 logs
 *.log
 
-# demo-repository
+# demo-repositories
 demo/repo/
+demo/repo2/

@@ -1,0 +1,15 @@
+$ #===== REFLOG STILL HOLDS REFERENCES
+$ git reflog
+8bcba46 HEAD@{0}: rebase finished: returning to refs/heads/feature/bright-future
+8bcba46 HEAD@{1}: rebase: reworded for clarity
+bc97449 HEAD@{2}: rebase: checkout master
+ab9886a HEAD@{3}: checkout: moving from master to feature/bright-future
+bc97449 HEAD@{4}: commit: add language
+af4d80d HEAD@{5}: checkout: moving from feature/bright-future to master
+ab9886a HEAD@{6}: commit: reworded for clarity
+af4d80d HEAD@{7}: checkout: moving from master to feature/bright-future
+af4d80d HEAD@{8}: commit: auf wiedersehen
+f970c41 HEAD@{9}: commit (initial): created hello.txt again
+$ git reflog delete --rewrite 'HEAD@{6}' 'HEAD@{3}'
+$ git reflog delete --rewrite 'refs/heads/feature/bright-future@{1}'
+$ git gc

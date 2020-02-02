@@ -3,14 +3,14 @@ $ git checkout -b refactoring
 Switched to a new branch 'refactoring'
 $ find .git/objects -d 2
 .git/objects/69/803c6b4180c0d9b7d5467ee6bbdcc8b952e92b
-.git/objects/56/a1b41c6b84e1dbe906ad247d41fd4c3799563f
-.git/objects/51/b9455f1e0a81f23b3727bbd015627a832427d1
+.git/objects/67/5a73c53b7600bee5c6836b9b395ca4a418bda5
+.git/objects/ac/964cd09c166382d6c8076a80d8d1f2abc15c74
 .git/objects/ec/947e3dd7a7752d078f1ed0cfde7457b21fef58
-.git/objects/80/962ef58c63bb5f1a65c89242ae94989c87266b
-.git/objects/64/b224c76d1ee8775e8635728995bc7da5ffbb99
+.git/objects/2a/969940ae860462867dcd9ac6c9fee38e170a0f
+.git/objects/dc/1295f028db523ba50bfc075e7d027bea76fecb
 .git/objects/af/5626b4a114abcb82d63db7c8082c3c4756e51b
-.git/objects/c2/2d27bbc0d0b5584abd6de2a69d350c8f4c9805
 .git/objects/82/d73d56d5b5248d2eda35be9354c375a14fa697
+.git/objects/8b/992357e9192348082d8a6a7cab2a2fc9a9c07a
 $ find .git/refs -d 2
 .git/refs/heads/master
 .git/refs/heads/refactoring
