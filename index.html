@@ -27,7 +27,7 @@
         <section>
           <div style="position: absolute; width: 40%; left: 0; padding: 0px; font-size: 12px; text-align: center;">
             <img data-src="img/git.png"><br/>
-            <a class="explicit-link">https://xkcd.com/1597/</a>
+            <a style="color: lightgrey" class="explicit-link">https://xkcd.com/1597/</a>
           </div>
           <div style="position: absolute; width: 50%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 15px; font-size: 25px; text-align: right;">
             <h1>The<br/>beauty<br/>of<br/>git</h1>
@@ -47,7 +47,7 @@
         </section>
 
         <section>
-          <h2>It's Playtime!</h2>
+          <h2>Let's get started</h2>
         </section>
 
         <section>
@@ -114,17 +114,66 @@
         </section>
 
         <section>
-          <h2>Core concepts - commands</h2>
-          <p>porcelain</p>
-          <p>plumbing</p>
+          <section>
+            <h2>Command types</h2>
+            <p>porcelain</p>
+            <p>plumbing</p>
+            <p>&nbsp;</p>
+            <p style="font-size: 14pt">
+              <a class="explicit-link">https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain</a></p>
+          </section>
+          <section>
+            <h2>porcelain commands</h2>
+            <p>the shiny surface</p>
+            <p>meant for the end user</p>
+            <p>housekeeping included</p>
+            <p>usually used for command line</p>
+          </section>
+          <section>
+            <h2>plumbing commands</h2>
+            <p>get your hands dirty</p>
+            <p>meant for the craftsmen</p>
+            <p>where the real work is done</p>
+            <p>intended to be upward compatible</p>
+            <p>use it for scripts</p>
+          </section>
         </section>
 
         <section>
-          <h2>Core concepts - locations</h2>
-          <p>worktree</p>
-          <p>stage</p>
-          <p>repository</p>
-          <p>remote</p>
+          <section>
+            <h2>Locations</h2>
+            <p>worktree</p>
+            <p>stage / index</p>
+            <p>repository</p>
+            <p>remote</p>
+          </section>
+          <section>
+            <h2>worktree</h2>
+            <p>local working copy</p>
+            <p>usually based on a branch</p>
+            <p>can be "clean" or "dirty"</p>
+          </section>
+          <section>
+            <h2>stage / index</h2>
+            <p>objects stored but not commited</p>
+            <p>manage what the next commit will do</p>
+          </section>
+          <section>
+            <h2>repository</h2>
+            <p>everything git knows about our files</p>
+            <p>usually in ".git" dir within the worktree</p>
+            <p>may be bare, i.e. without a worktree</p>
+          </section>
+          <section>
+            <h2>remote</h2>
+            <p>other repository "somewhere"</p>
+            <p>fetch / pull</p>
+            <p>push</p>
+          </section>
+        </section>
+
+        <section>
+          <h2>Now back to work</h2>
         </section>
 
         <section>
@@ -177,7 +226,7 @@
         </section>
 
         <section>
-          <h2>Core concepts - data types</h2>
+          <h2>Core data types</h2>
           <p>objects</p>
           <p>references</p>
         </section>
@@ -185,46 +234,43 @@
         <section>
           <section>
             <h2>Objects</h2>
+            <p>header with type and length</p>
+            <p>sha1 guaranties integrity </p>
+            <p>content addressed</p>
+            <p>stored compressed</p>
+            <p>&nbsp;</p>
+            <p style="font-size: 14pt">
+              <a class="explicit-link">https://git-scm.com/book/en/v2/Git-Internals-Git-Objects</a></p>
+          </section>
+          <section>
+            <h2>Object types</h2>
             <p>blobs</p>
             <p>trees</p>
             <p>commits</p>
             <p>(annotated) tags</p>
-          </section>
-          <section>
-            <h2>blobs</h2>
-          </section>
-          <section>
-            <h2>trees</h2>
-          </section>
-          <section>
-            <h2>commits</h2>
-            <p>A commit represents a complete version of your code.</p>
-          </section>
-          <section>
-            <h2>(annotated) tags</h2>
           </section>
         </section>
 
         <section>
           <section>
             <h2>References</h2>
+            <p>pointers to objects</p>
+            <p>just ordinary text files</p>
+            <p>reflogs track changes temporarily</p>
+            <p>&nbsp;</p>
+            <p style="font-size: 14pt">
+              <a class="explicit-link">https://git-scm.com/book/en/v2/Git-Internals-Git-References</a></p>
+          </section>
+          <section>
+            <h2>Reference types</h2>
             <p>heads (aka branches)</p>
             <p>(simple) tags</p>
-            <p>HEAD</p>
-          </section>
-          <section>
-            <h2>heads (aka branches)</h2>
-          </section>
-          <section>
-            <h2>(simple) tags</h2>
-          </section>
-          <section>
-            <h2>HEAD</h2>
+            <p>HEAD, FETCH_HEAD etc.</p>
           </section>
         </section>
 
         <section>
-          <h2>Playtime again!</h2>
+          <h2>Let's do another project</h2>
         </section>
 
         <section>
