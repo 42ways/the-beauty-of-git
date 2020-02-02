@@ -35,6 +35,15 @@
             <h3>Thomas Herrmann</h3>
             <p><a href="mailto:thomas@42ways.de">thomas@42ways.de</a></p>
           </div>
+          <aside class="notes">
+            I will discuss some internals if git and show some of the underlying concepts.<br/>
+            <b>Linus Thorvalds began the development of Git on 3 April 2005.</b><br/>
+            He announced the project on 6 April; it became self-hosting as of 7 April.<br/>
+            The first merge of multiple branches took place on 18 April.<br/>
+            <b>On 16 June Git managed the kernel 2.6.12 release.</b><br/>
+            Torvalds turned over maintenance on 26 July 2005 to Junio Hamano, a major contributor to the project.<br/>
+            Hamano was responsible for the 1.0 release on 21 December 2005 and remains the project's maintainer.
+          </aside>
         </section>
 
         <section>
@@ -44,10 +53,17 @@
           <p>reliable</p>
           <p>simple</p>
           <p>fast</p>
+          <aside class="notes">
+            cryptographic methods like sha1 checksum enable content addressablility,
+            integrity checks, easy distribution (global unique names) etc.
+          </aside>
         </section>
 
         <section>
           <h2>Let's get started</h2>
+          <aside class="notes">
+            We'll create a small git repository and add some files to it
+          </aside>
         </section>
 
         <section>
@@ -71,6 +87,10 @@
         <section>
           <section>
             <pre><code class="shell" data-sample="demo/transcript/first-add.shell"></code></pre>
+            <aside class="notes">
+              beware that only newly created objects are stored this way<br/>
+              they are moved into "packs" when gc is run
+            </aside>
           </section>
           <section>
             <img src="demo/img/first-add.png"/>
@@ -83,12 +103,18 @@
           </section>
           <section>
             <img src="demo/img/first-commit.png"/>
+            <aside class="notes">
+              everything is content addressed
+            </aside>
           </section>
         </section>
 
         <section>
           <section>
             <pre><code class="shell" data-sample="demo/transcript/change-first-file.shell"></code></pre>
+            <aside class="notes">
+              hash-object is a "pumbing" command
+            </aside>
           </section>
           <section>
             <img src="demo/img/change-first-file.png"/>
@@ -98,6 +124,10 @@
         <section>
           <section>
             <pre><code class="shell" data-sample="demo/transcript/add-change-first.shell"></code></pre>
+            <aside class="notes">
+              update-index adds changes to the stage<br/>
+              i.e. hash-object + update-index is basically the same as "add"
+            </aside>
           </section>
           <section>
             <img src="demo/img/add-change-first.png"/>
@@ -155,30 +185,38 @@
           </section>
           <section>
             <h2>stage / index</h2>
-            <p>objects stored but not commited</p>
+            <p>objects stored, but not commited</p>
             <p>manage what the next commit will do</p>
           </section>
           <section>
             <h2>repository</h2>
-            <p>everything git knows about our files</p>
-            <p>usually in ".git" dir within the worktree</p>
-            <p>may be bare, i.e. without a worktree</p>
+            <p>everything git knows about your files</p>
+            <p>usually the ".git" subdir of the worktree</p>
+            <p>may be "bare", i.e. without a worktree</p>
           </section>
           <section>
             <h2>remote</h2>
-            <p>other repository "somewhere"</p>
-            <p>fetch / pull</p>
-            <p>push</p>
+            <p>other repository "somewhere" else</p>
+            <p>fetch / pull to get changes</p>
+            <p>push to spread changes</p>
           </section>
         </section>
 
         <section>
-          <h2>Now back to work</h2>
+          <h2>Back to work again</h2>
+          <aside class="notes">
+            let's do some more changes in our little project
+            and make our repository content more interesting
+          </aside>
         </section>
 
         <section>
           <section>
             <pre><code class="shell" data-sample="demo/transcript/first-tag.shell"></code></pre>
+            <aside class="notes">
+              Since we want to prepare a release, we tag our current state<br/>
+              Therefore we will able to remember this commit for all times...
+            </aside>
           </section>
           <section>
             <img src="demo/img/first-tag.png"/>
@@ -197,6 +235,9 @@
         <section>
           <section>
             <pre><code class="shell" data-sample="demo/transcript/second-branch.shell"></code></pre>
+            <aside class="notes">
+              We are in the middle of releasing our system, so refactoring is seperated
+            </aside>
           </section>
           <section>
             <img src="demo/img/second-branch.png"/>
@@ -215,6 +256,10 @@
         <section>
           <section>
             <pre><code class="shell" data-sample="demo/transcript/production-tag.shell"></code></pre>
+            <aside class="notes">
+              despite the fact that we are currently in the middle of refactoring,
+              we can still release our RC v0.2 as Version 1.0 of our system
+            </aside>
           </section>
           <section>
             <img src="demo/img/production-tag.png"/>
@@ -234,10 +279,10 @@
         <section>
           <section>
             <h2>Objects</h2>
-            <p>header with type and length</p>
-            <p>sha1 guaranties integrity </p>
+            <p>include header with type and length</p>
+            <p>sha1 guaranties integrity</p>
             <p>content addressed</p>
-            <p>stored compressed</p>
+            <p>compressed</p>
             <p>&nbsp;</p>
             <p style="font-size: 14pt">
               <a class="explicit-link">https://git-scm.com/book/en/v2/Git-Internals-Git-Objects</a></p>
@@ -306,6 +351,12 @@
           </section>
           <section>
             <img src="demo/img2/rebase.png"/>
+            <aside class="notes">
+              our previous commit was based on 0.1, now we are based on 0.2<br/>
+              with the rebase, we get the new version of bye.txt from the master branch,<br/>
+              but keep our new version of hello.txt<br/>
+              the previous commit is now obsolete
+            </aside>
           </section>
         </section>
 
@@ -315,6 +366,9 @@
           </section>
           <section>
             <img src="demo/img2/gc.png"/>
+            <aside class="notes">
+              someone seems to still reference our orphaned commit...
+            </aside>
           </section>
         </section>
 
@@ -324,6 +378,10 @@
           </section>
           <section>
             <img src="demo/img2/reflog.png"/>
+            <aside class="notes">
+              the garbage connection marked the commit as obsolete<br/>
+              but git keeps the garbage as long as possible
+            </aside>
           </section>
         </section>
 
@@ -342,6 +400,9 @@
           </section>
           <section>
             <img src="demo/img2/merge-it.png"/>
+            <aside class="notes">
+              the only thing that changed is the master ref
+            </aside>
           </section>
         </section>
 
@@ -355,6 +416,11 @@
           </section>
           <section>
             <img src="demo/img2/fetch-the-other-repo.png"/>
+            <aside class="notes">
+              got everything from the first demo<br/>
+              nothing is reachable<br/>
+              identical files are common, thanks to content addressing<br/>
+            </aside>
           </section>
         </section>
 
@@ -364,6 +430,9 @@
           </section>
           <section>
             <img src="demo/img2/awake-the-other-repo.png"/>
+            <aside class="notes">
+              now everything is visible because the new branch points to it
+            </aside>
           </section>
         </section>
 
@@ -373,6 +442,10 @@
           </section>
           <section>
             <img src="demo/img2/merge-the-other-repo.png"/>
+            <aside class="notes">
+              doesn't make that much sense, because we had no common commits, but...<br/>
+              you can even merge comletely unrelated things
+            </aside>
           </section>
         </section>
 
