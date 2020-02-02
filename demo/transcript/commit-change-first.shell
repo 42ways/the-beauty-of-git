@@ -1,4 +1,4 @@
-$ #===== COMMI>T CHANGED FILE
+$ #===== COMMIT CHANGED FILE
 $ git commit -m 'extended hello'
 [master ac964cd] extended hello
  1 file changed, 1 insertion(+)

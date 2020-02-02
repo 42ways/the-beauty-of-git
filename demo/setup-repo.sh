@@ -107,7 +107,7 @@ create_img ../img/${step}.png
 
 step=commit-change-first
 (
-echo "+ #===== COMMI>T CHANGED FILE"
+echo "+ #===== COMMIT CHANGED FILE"
 DATE="Fri Jan 17 12:36:54 CET 2020"
 export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
