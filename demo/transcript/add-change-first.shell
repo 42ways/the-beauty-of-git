@@ -1,5 +1,11 @@
 $ #===== ADD FILE CHANGES TO INDEX
 $ git update-index hello.txt
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   hello.txt
+
 $ find .git/objects -d 2
 .git/objects/69/803c6b4180c0d9b7d5467ee6bbdcc8b952e92b
 .git/objects/67/5a73c53b7600bee5c6836b9b395ca4a418bda5

@@ -6,6 +6,7 @@
 function create_img()
 {
     git-draw --color-scheme paired12 --sha1-length 6 --hide-legend --hide-reflogs -i --image-filename $1 $2
+    rm -f git-draw.dot
 }
 
 ################################################################################
@@ -33,28 +34,14 @@ create_img ../img/${step}.png
 git config --local user.name "T.H."
 git config --local user.email "thomas@42ways.de"
 
-step=first-file
+step=first-add
 (
-echo "+ #===== CREATE FIRST FILE"
+echo "+ #===== ADD FIRST FILE"
 DATE="Wed Jan 15 08:15:20 CET 2020"
 export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 echo "+ echo 'Hello, world!' > hello.txt"
 echo 'Hello, world!' > hello.txt
-echo "+ echo -e 'blob 14\0Hello, world!' | shasum"
-echo -e 'blob 14\0Hello, world!' | shasum
-set -x
-find .git/objects
-find .git/refs
-) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
-create_img ../img/${step}.png
-
-step=first-add
-(
-echo "+ #===== ADD FIRST FILE"
-DATE="Wed Jan 15 08:45:19 CET 2020"
-export GIT_AUTHOR_DATE=${DATE}
-export GIT_COMMITTER_DATE=${DATE}
 echo "+ echo -e 'blob 14\0Hello, world!' | shasum"
 echo -e 'blob 14\0Hello, world!' | shasum
 set -x
@@ -87,8 +74,7 @@ echo "+ echo 'Glad to see you!' >> hello.txt"
 echo 'Glad to see you!' >> hello.txt
 set -x
 git hash-object hello.txt
-find .git/objects -d 2
-find .git/refs -d 2
+git status
 ) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
@@ -100,6 +86,7 @@ export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
 git update-index hello.txt
+git status
 find .git/objects -d 2
 find .git/refs -d 2
 ) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
@@ -126,7 +113,6 @@ export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
 git tag 'v0.1'
-find .git/objects -d 2
 find .git/refs -d 2
 ) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
@@ -143,7 +129,6 @@ set -x
 git add bye.txt
 git commit -m 'auf wiedersehen'
 git tag 'v0.2'
-find .git/objects -d 2
 find .git/refs -d 2
 ) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
@@ -156,7 +141,6 @@ export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
 git checkout -b refactoring
-find .git/objects -d 2
 find .git/refs -d 2
 ) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
@@ -173,8 +157,6 @@ git mv hello.txt happy
 cp happy/hello.txt happy/welcome-back.txt
 git add happy/welcome-back.txt
 git commit -m "be happy"
-find .git/objects -d 2
-find .git/refs -d 2
 ) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
@@ -186,26 +168,14 @@ export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
 git tag -m 'GO PRODUCTON!' 'v1.0' master
-find .git/objects -d 2
 find .git/refs -d 2
 ) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
 create_img ../img/${step}.png
 
-step=final-log
-(
-echo "+ #===== LOG WHAT WE HAVE ACHIEVED"
-DATE="Mon Jan 27 12:34:56 CET 2020"
-export GIT_AUTHOR_DATE=${DATE}
-export GIT_COMMITTER_DATE=${DATE}
-set -x
-git log --oneline
-) 2>&1 | sed -e 's/^+ /$ /' | tee ../transcript/${step}.shell
-
 ) 2>&1 | tee setup-repo.log
 
-
 ################################################################################
-##### ADVANCED DEMO (REBASE)
+##### ADVANCED DEMO REPOSITORY (REBASE AND MERGE OTHER REPO INTO IT)
 ################################################################################
 # use subshell to collect output 
 (
@@ -228,19 +198,17 @@ cd repo2
 set +x
 git config --local user.name "thomas" > /dev/null 2>&1
 git config --local user.email "mail@thoherr.de" > /dev/null 2>&1
-set +x
 echo "+ echo 'Hello, world!' > hello.txt"
 echo 'Hello, world!' > hello.txt
 set -x
 git hash-object hello.txt
 git add hello.txt
-git commit -m 'created hello.txt again'
 set +x
 echo "+ echo 'Goodbye and au revoir' > bye.txt"
 echo 'Goodbye and au revoir' > bye.txt
 set -x
 git add bye.txt
-git commit -m 'auf wiedersehen'
+git commit -m 'created hello.txt and auf wiedersehen'
 git tag '0.1'
 ) 2>&1 | sed -e '/+ set +x/d' -e 's/^+ /$ /' -e 's#/.*/repo2#/.../repo2#' | tee ../transcript2/${step}.shell
 create_img ../img2/${step}.png
@@ -284,43 +252,6 @@ git rebase master
 ) 2>&1 | sed -e '/+ set +x/d' -e 's/^+ /$ /' | tee ../transcript2/${step}.shell
 create_img ../img2/${step}.png --hide-commitcontent
 
-step=gc
-(
-echo "+ #===== BACK TO MASTER AND COLLECT OUR GARBAGE"
-DATE="Wed Feb 02 01:23:45 CET 2020"
-export GIT_AUTHOR_DATE=${DATE}
-export GIT_COMMITTER_DATE=${DATE}
-set -x
-git checkout master
-git gc
-) 2>&1 | sed -e '/+ set +x/d' -e 's/^+ /$ /' | tee ../transcript2/${step}.shell
-create_img ../img2/${step}.png --hide-commitcontent
-
-step=reflog
-(
-echo "+ #===== REFLOG STILL HOLDS REFERENCES"
-DATE="Wed Feb 02 02:34:56 CET 2020"
-export GIT_AUTHOR_DATE=${DATE}
-export GIT_COMMITTER_DATE=${DATE}
-set -x
-git reflog
-git reflog delete --rewrite 'HEAD@{7}' 'HEAD@{4}'
-git reflog delete --rewrite refs/heads/feature/bright-future@{1}
-git gc
-) 2>&1 | sed -e '/+ set +x/d' -e 's/^+ /$ /' | tee ../transcript2/${step}.shell
-create_img ../img2/${step}.png --hide-commitcontent
-
-step=gc-now
-(
-echo "+ #===== ACTUALLY COLLECT OUR GARBAGE"
-DATE="Wed Feb 02 03:45:00 CET 2020"
-export GIT_AUTHOR_DATE=${DATE}
-export GIT_COMMITTER_DATE=${DATE}
-set -x
-git gc --prune=all
-) 2>&1 | sed -e '/+ set +x/d' -e 's/^+ /$ /' | tee ../transcript2/${step}.shell
-create_img ../img2/${step}.png --hide-commitcontent
-
 step=merge-it
 (
 echo "+ #===== MERGE OUR BRANCH (IT'S EASY NOW)"
@@ -328,6 +259,7 @@ DATE="Wed Feb 02 11:22:44 CET 2020"
 export GIT_AUTHOR_DATE=${DATE}
 export GIT_COMMITTER_DATE=${DATE}
 set -x
+git checkout master
 git merge feature/bright-future
 ) 2>&1 | sed -e '/+ set +x/d' -e 's/^+ /$ /' | tee ../transcript2/${step}.shell
 create_img ../img2/${step}.png --hide-commitcontent
