@@ -24,7 +24,7 @@
     <div class="reveal">
       <div class="slides">
 
-        <section>
+        <section data-menu-title="-- THE BEAUTY OF GIT --">
           <div style="position: absolute; width: 40%; left: 0; padding: 0px; font-size: 12px; text-align: center;">
             <img data-src="img/git.png"><br/>
             <a style="color: lightgrey" class="explicit-link">https://xkcd.com/1597/</a>
@@ -46,7 +46,7 @@
           </aside>
         </section>
 
-        <section>
+        <section data-menu-title="*** CHARACTERISTICS ***">
           <h2>Characteristics</h2>
           <p>content addressed</p>
           <p>distributed</p>
@@ -60,7 +60,7 @@
           </aside>
         </section>
 
-        <section>
+        <section data-menu-title="# LET'S GET STARTED #">
           <h2>Let's get started</h2>
           <aside class="notes">
             We'll create a small git repository and add some files to it<br/>
@@ -69,18 +69,18 @@
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git init">
             <pre><code class="shell" data-sample="demo/transcript/init.shell"></code></pre>
             <p style="font-size: 14pt">
               <a class="explicit-link">https://git-scm.com/docs/gitrepository-layout</a></p>
           </section>
-          <section>
+          <section data-menu-title="init - repo">
             <img style="width: 50%;" src="demo/img/init.png"/>
           </section>
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git add">
             <pre><code class="shell" data-sample="demo/transcript/first-add.shell"></code></pre>
             <aside class="notes">
               this just creates the file, it is not in and tree for now, since it is not commited<br/>
@@ -88,7 +88,7 @@
               they are moved into "packs" when gc is run (can in theory be unpacked again)
             </aside>
           </section>
-          <section>
+          <section data-menu-title="add - repo">
             <img style="width: 50%;" src="demo/img/first-add.png"/>
             <aside class="notes">
               the newly created file is referenced by the index only
@@ -97,10 +97,10 @@
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git commit">
             <pre><code class="shell" data-sample="demo/transcript/first-commit.shell"></code></pre>
           </section>
-          <section>
+          <section data-menu-title="commit - repo">
             <img class="stretch" src="demo/img/first-commit.png"/>
             <aside class="notes">
               everything is content addressed<br/>
@@ -110,42 +110,42 @@
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git hash-object">
             <pre><code class="shell" data-sample="demo/transcript/change-first-file.shell"></code></pre>
             <aside class="notes">
               hash-object is a "pumbing" command<br/>
               but we did nothing in git, the file is only changed in the worktree
             </aside>
           </section>
-          <section>
+          <section data-menu-title="hash-object - repo">
             <img class="stretch" src="demo/img/change-first-file.png"/>
           </section>
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git update-index">
             <pre><code class="shell" data-sample="demo/transcript/add-change-first.shell"></code></pre>
             <aside class="notes">
               update-index adds changes to the stage<br/>
               i.e. hash-object + update-index is basically the same as "add"
             </aside>
           </section>
-          <section>
+          <section data-menu-title="update-index - repo">
             <img class="stretch" src="demo/img/add-change-first.png"/>
           </section>
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git commit (change)">
             <pre><code class="shell" data-sample="demo/transcript/commit-change-first.shell"></code></pre>
           </section>
-          <section>
+          <section data-menu-title="commit - repo (change)">
             <img class="stretch" src="demo/img/commit-change-first.png"/>
           </section>
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="*** COMMAND TYPES ***">
             <h2>Command types</h2>
             <p>porcelain</p>
             <p>plumbing</p>
@@ -171,7 +171,7 @@
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="*** LOCATIONS ***">
             <h2>Locations</h2>
             <p>worktree</p>
             <p>stage / index</p>
@@ -203,7 +203,7 @@
           </section>
         </section>
 
-        <section>
+        <section data-menu-title="# BACK TO WORK #">
           <h2>Back to work again</h2>
           <aside class="notes">
             let's do some more changes in our little project<br/>
@@ -213,69 +213,69 @@
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git tag">
             <pre><code class="shell" data-sample="demo/transcript/first-tag.shell"></code></pre>
             <aside class="notes">
               Since we want to prepare a release, we tag our current state<br/>
               Therefore we will able to remember this commit for all times...
             </aside>
           </section>
-          <section>
+          <section data-menu-title="tag - repo">
             <img class="stretch" src="demo/img/first-tag.png"/>
           </section>
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git add (second file)">
             <pre><code class="shell" data-sample="demo/transcript/second-file.shell"></code></pre>
           </section>
-          <section>
+          <section data-menu-title="add (second file) - repo">
             <img class="stretch" src="demo/img/second-file.png"/>
           </section>
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git checkout -b">
             <pre><code class="shell" data-sample="demo/transcript/second-branch.shell"></code></pre>
             <aside class="notes">
               We are in the middle of releasing our system, so refactoring is seperated
             </aside>
           </section>
-          <section>
+          <section data-menu-title="checkout -b - repo">
             <img class="stretch" src="demo/img/second-branch.png"/>
           </section>
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git mv">
             <pre><code class="shell" data-sample="demo/transcript/refactoring-done.shell"></code></pre>
           </section>
-          <section>
+          <section data-menu-title="mv - repo">
             <img class="stretch" src="demo/img/refactoring-done.png"/>
           </section>
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git tag -m">
             <pre><code class="shell" data-sample="demo/transcript/production-tag.shell"></code></pre>
             <aside class="notes">
               despite the fact that we are currently in the middle of refactoring,
               we can still release our RC v0.2 as Version 1.0 of our system
             </aside>
           </section>
-          <section>
+          <section data-menu-title="tag -m - repo">
             <img class="stretch" src="demo/img/production-tag.png"/>
           </section>
         </section>
 
-        <section>
+        <section data-menu-title="*** DATA TYPES ***">
           <h2>Core data types</h2>
           <p>objects</p>
           <p>references</p>
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="*** OBJECTS ***">
             <h2>Objects</h2>
             <p>include header with type and length</p>
             <p>sha1 guaranties integrity</p>
@@ -295,7 +295,7 @@
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="*** REFERENCES ***">
             <h2>References</h2>
             <p>pointers to objects</p>
             <p>just ordinary text files</p>
@@ -312,7 +312,7 @@
           </section>
         </section>
 
-        <section>
+        <section data-menu-title="# ANOTHER PROJECT #">
           <h2>Let's do another project</h2>
           <aside class="notes">
             some more concepts for tags and branches,<br/>
@@ -321,37 +321,37 @@
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="2nd project - init">
             <pre><code class="shell" data-sample="demo/transcript2/first-release.shell"></code></pre>
           </section>
-          <section>
+          <section data-menu-title="2nd project - init - repo">
             <img class="stretch" src="demo/img2/first-release.png"/>
           </section>
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="2nd project - feature">
             <pre><code class="shell" data-sample="demo/transcript2/feature-branch.shell"></code></pre>
           </section>
-          <section>
+          <section data-menu-title="2nd project - feature - repo">
             <img class="stretch" src="demo/img2/feature-branch.png"/>
           </section>
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="2nd project - master">
             <pre><code class="shell" data-sample="demo/transcript2/further-development.shell"></code></pre>
           </section>
-          <section>
+          <section data-menu-title="2nd project - master - repo">
             <img class="stretch" src="demo/img2/further-development.png"/>
           </section>
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git rebase">
             <pre><code class="shell" data-sample="demo/transcript2/rebase.shell"></code></pre>
           </section>
-          <section>
+          <section data-menu-title="rebase - repo">
             <img class="stretch" src="demo/img2/rebase.png"/>
             <aside class="notes">
               our previous commit was based on 0.1, now we are based on 0.2<br/>
@@ -363,10 +363,10 @@
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git merge">
             <pre><code class="shell" data-sample="demo/transcript2/merge-it.shell"></code></pre>
           </section>
-          <section>
+          <section data-menu-title="merge - repo">
             <img class="stretch" src="demo/img2/merge-it.png"/>
             <aside class="notes">
               the only thing that changed is the master ref
@@ -374,7 +374,7 @@
           </section>
         </section>
 
-        <section>
+        <section data-menu-title="# ONE MORE THING #">
           <h2>One more thing</h2>
           <aside class="notes">
             we have two repos now.<br/>
@@ -383,10 +383,10 @@
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git fetch">
              <pre><code class="shell" data-sample="demo/transcript2/fetch-the-other-repo.shell"></code></pre>
           </section>
-          <section>
+          <section data-menu-title="fetch - repo">
             <img class="stretch" src="demo/img2/fetch-the-other-repo.png"/>
             <aside class="notes">
               got everything from the first demo<br/>
@@ -397,10 +397,10 @@
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git branch FETCH_HEAD">
              <pre><code class="shell" data-sample="demo/transcript2/awake-the-other-repo.shell"></code></pre>
           </section>
-          <section>
+          <section data-menu-title="branch FETCH_HEAD - repo">
             <img class="stretch" src="demo/img2/awake-the-other-repo.png"/>
             <aside class="notes">
               now everything is visible because the new branch points to it
@@ -409,10 +409,10 @@
         </section>
 
         <section>
-          <section>
+          <section data-menu-title="git merge (unrelated>)">
              <pre><code class="shell" data-sample="demo/transcript2/merge-the-other-repo.shell"></code></pre>
           </section>
-          <section>
+          <section data-menu-title="merge (unrelated>) - repo">
             <img class="stretch" src="demo/img2/merge-the-other-repo.png"/>
             <aside class="notes">
               doesn't make that much sense, because we had no common commits, but...<br/>
@@ -421,7 +421,7 @@
           </section>
         </section>
 
-        <section style="font-size: 14pt">
+        <section style="font-size: 14pt" data-menu-title="*** LINKS ***">
           <h2>Further reading, listening, watching and playing</h2>
           <p>This presentation
             <a class="explicit-link">https://github.com/42ways/the-beauty-of-git</a></p>
