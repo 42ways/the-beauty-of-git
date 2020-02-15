@@ -114,7 +114,7 @@
             <pre><code class="shell" data-sample="demo/transcript/change-first-file.shell"></code></pre>
             <aside class="notes">
               hash-object is a "pumbing" command<br/>
-              but we did nothing in Git, the file is only changed in the worktree
+              but we did nothing in Git, the file is only changed in the working tree
             </aside>
           </section>
           <section data-menu-title="hash-object - repo">
@@ -173,27 +173,33 @@
         <section>
           <section data-menu-title="*** LOCATIONS ***">
             <h2>Locations</h2>
-            <p>worktree</p>
-            <p>stage / index</p>
             <p>repository</p>
+            <p>working tree</p>
+            <p>index</p>
             <p>remote</p>
-          </section>
-          <section>
-            <h2>worktree</h2>
-            <p>local working copy</p>
-            <p>usually based on a branch</p>
-            <p>can be "clean" or "dirty"</p>
-          </section>
-          <section>
-            <h2>stage / index</h2>
-            <p>objects stored, but not commited</p>
-            <p>manage what the next commit will do</p>
           </section>
           <section>
             <h2>repository</h2>
             <p>everything Git knows about your files</p>
-            <p>usually the ".git" subdir of the worktree</p>
-            <p>may be "bare", i.e. without a worktree</p>
+            <p>usually the ".git" subdir of the working tree</p>
+            <p>may be "bare", i.e. without a working tree</p>
+          </section>
+          <section>
+            <h2>working tree</h2>
+            <p>trees and blobs on local filesystem</p>
+            <p>based on a branch or other commit</p>
+            <p>can be "clean" or "dirty"</p>
+          </section>
+          <section>
+            <h2>index</h2>
+            <p>staging area</p>
+            <p>objects stored, but not commited</p>
+            <p>manage what the next commit will do</p>
+          </section>
+          <section>
+            <img class="stretch" data-src="img/repo-working-tree-index.png">
+            <p style="font-size: 12pt">
+              <a style="color: lightgrey" class="explicit-link">https://jwiegley.github.io/git-from-the-bottom-up/</a></p>
           </section>
           <section>
             <h2>remote</h2>
@@ -431,6 +437,8 @@
             <a class="explicit-link">https://youtu.be/4XpnKHJAok8</a></p>
           <p>Think like a Git - a guide for the perplexed
             <a class="explicit-link">http://think-like-a-git.net/</a></p>
+          <p>Git from the Bottom up
+              <a class="explicit-link">https://jwiegley.github.io/git-from-the-bottom-up/</a></p>
           <p>A Plumber’s Guide to Git
             <a class="explicit-link">https://alexwlchan.net/a-plumbers-guide-to-git/</a></p>
           <p>git-draw - draw the structure of (tiny) Git repos
