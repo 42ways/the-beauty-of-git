@@ -203,12 +203,13 @@ echo 'Hello, world!' > hello.txt
 set -x
 git hash-object hello.txt
 git add hello.txt
+git commit -m 'created hello.txt'
 set +x
 echo "+ echo 'Goodbye and au revoir' > bye.txt"
 echo 'Goodbye and au revoir' > bye.txt
 set -x
 git add bye.txt
-git commit -m 'created hello.txt and auf wiedersehen'
+git commit -m 'created auf wiedersehen'
 git tag '0.1'
 ) 2>&1 | sed -e '/+ set +x/d' -e 's/^+ /$ /' -e 's#/.*/repo2#/.../repo2#' | tee ../transcript2/${step}.shell
 create_img ../img2/${step}.png

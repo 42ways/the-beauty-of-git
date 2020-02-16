@@ -2,7 +2,7 @@ $ #===== MERGE OUR BRANCH (IT'S EASY NOW)
 $ git checkout master
 Switched to branch 'master'
 $ git merge feature/bright-future
-Updating 4161c23..f47281f
+Updating 21162dc..aa077f8
 Fast-forward
  hello.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

@@ -3,5 +3,5 @@ $ git checkout -b feature/bright-future
 Switched to a new branch 'feature/bright-future'
 $ sed -i '' -e 's/world/brave new world/' hello.txt
 $ git commit -a -m 'reworded for clarity'
-[feature/bright-future a5c5342] reworded for clarity
+[feature/bright-future 80a6527] reworded for clarity
  1 file changed, 1 insertion(+), 1 deletion(-)
