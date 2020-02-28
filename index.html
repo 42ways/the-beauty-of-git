@@ -37,13 +37,13 @@
             <p><a href="mailto:thomas@42ways.de">thomas@42ways.de</a></p>
           </div>
           <aside class="notes">
-            I will discuss some internals if Git and show some of the underlying concepts.<br/>
-            <b>Linus Thorvalds began the development of Git on 3 April 2005.</b><br/>
-            He announced the project on 6 April; it became self-hosting as of 7 April.<br/>
-            The first merge of multiple branches took place on 18 April.<br/>
-            <b>On 16 June Git managed the kernel 2.6.12 release.</b><br/>
-            Torvalds turned over maintenance on 26 July 2005 to Junio Hamano, a major contributor to the project.<br/>
-            Hamano was responsible for the 1.0 release on 21 December 2005 and remains the project's maintainer.
+            I will discuss some internals of git and show some of the underlying concepts.<br/>
+            <b>Linus Torvalds began the development of Git on April 3, 2005.</b><br/>
+            He announced the project on April 6; it became self-hosting as of 7 April.<br/>
+            The first merge of multiple branches took place on April 18.<br/>
+            <b>On June 16 Git managed the kernel 2.6.12 release.</b><br/>
+            Torvalds turned over maintenance on July 26, 2005 to Junio Hamano, a major contributor to the project.<br/>
+            Hamano was responsible for the 1.0 release on December 21, 2005 and remains the project's maintainer.
           </aside>
         </section>
 
@@ -65,7 +65,7 @@
           <h2>Let's get started</h2>
           <aside class="notes">
             We'll create a small Git repository and add some files to it<br/>
-            just the basics of the object store
+            learn the <b>basics of the object store</b>
           </aside>
         </section>
 
@@ -74,6 +74,11 @@
             <pre><code class="shell" data-sample="demo/transcript/init.shell"></code></pre>
             <p style="font-size: 14pt">
               <a class="explicit-link">https://git-scm.com/docs/gitrepository-layout</a></p>
+            <aside class="notes">
+              create an empty repository<br/>
+              <b>HEAD</b> is our current worktree state<br/>
+              we will concentrate on <b>objects/</b> and <b>refs/</b><br/>
+            </aside>
           </section>
           <section data-menu-title="init - repo">
             <img style="width: 50%;" src="demo/img/init.png"/>
@@ -84,9 +89,12 @@
           <section data-menu-title="git add">
             <pre><code class="shell" data-sample="demo/transcript/first-add.shell"></code></pre>
             <aside class="notes">
-              this just creates the file, it is not in and tree for now, since it is not commited<br/>
-              beware that only newly created objects are stored this way<br/>
-              they are moved into "packs" when gc is run (can in theory be unpacked again)
+              this just <i>creates</i> a <b>blob</b>,<br/>
+               <i>stores it in the object store</i>,<br/>
+               and <i>adds it to the index</i> (aka stage)<br/>
+              it is not in a tree yet, since it is not commited<br/>
+              <i>sidenote: beware that only newly created objects are stored this way,
+              they are moved into "packs" when gc is run (can in theory be unpacked again)</i>
             </aside>
           </section>
           <section data-menu-title="add - repo">
@@ -100,12 +108,17 @@
         <section>
           <section data-menu-title="git commit">
             <pre><code class="shell" data-sample="demo/transcript/first-commit.shell"></code></pre>
+            <aside class="notes">
+              the <b>commit</b> adds our file to the git history</br>
+              a <b>tree</b> is created to represent the directory structure
+            </aside>
           </section>
           <section data-menu-title="commit - repo">
             <img class="stretch" src="demo/img/first-commit.png"/>
             <aside class="notes">
               everything is content addressed<br/>
-              the new file is reachable now via the commit and the tree
+              the new file is reachable now via the commit (and the tree)<br/>
+              a commit identifies a complete state of our system
             </aside>
           </section>
         </section>
@@ -114,8 +127,9 @@
           <section data-menu-title="git hash-object">
             <pre><code class="shell" data-sample="demo/transcript/change-first-file.shell"></code></pre>
             <aside class="notes">
-              hash-object is a "pumbing" command<br/>
-              but we did nothing in Git, the file is only changed in the working tree
+              <b>hash-object</b> is a <b>plumbing</b> command<br/>
+              we didn't change anything in git yet,<br/>
+              the file is only changed in the working tree
             </aside>
           </section>
           <section data-menu-title="hash-object - repo">
@@ -127,8 +141,8 @@
           <section data-menu-title="git update-index">
             <pre><code class="shell" data-sample="demo/transcript/add-change-first.shell"></code></pre>
             <aside class="notes">
-              update-index adds changes to the stage<br/>
-              i.e. hash-object + update-index is basically the same as "add"
+              <b>update-index</b> adds modifications to the <b>index</b> (aka stage)<br/>
+              i.e. <b>hash-object</b> + <b>update-index</b> is basically the same as <b>add</b>
             </aside>
           </section>
           <section data-menu-title="update-index - repo">
@@ -139,6 +153,10 @@
         <section>
           <section data-menu-title="git commit (change)">
             <pre><code class="shell" data-sample="demo/transcript/commit-change-first.shell"></code></pre>
+            <aside class="notes">
+              git creates a new tree when the change is commited,<br/>
+              since it has to reference a different version of our file
+            </aside>
           </section>
           <section data-menu-title="commit - repo (change)">
             <img class="stretch" src="demo/img/commit-change-first.png"/>
@@ -215,7 +233,7 @@
           <aside class="notes">
             let's do some more changes in our little project<br/>
             and make our repository content more interesting<br/>
-            by adding tags and branches
+            by adding <b>tags and branches</b>
           </aside>
         </section>
 
@@ -224,7 +242,7 @@
             <pre><code class="shell" data-sample="demo/transcript/first-tag.shell"></code></pre>
             <aside class="notes">
               Since we want to prepare a release, we tag our current state<br/>
-              Therefore we will able to remember this commit for all times...
+              therefore we will able to remember this commit for eternity...
             </aside>
           </section>
           <section data-menu-title="tag - repo">
@@ -235,6 +253,9 @@
         <section>
           <section data-menu-title="git add (second file)">
             <pre><code class="shell" data-sample="demo/transcript/second-file.shell"></code></pre>
+            <aside class="notes">
+              we <b>add</b> and <b>commit</b> another file and <b>tag</b> the new state<br/>
+            </aside>
           </section>
           <section data-menu-title="add (second file) - repo">
             <img class="stretch" src="demo/img/second-file.png"/>
@@ -245,20 +266,41 @@
           <section data-menu-title="git checkout -b">
             <pre><code class="shell" data-sample="demo/transcript/second-branch.shell"></code></pre>
             <aside class="notes">
-              We are in the middle of releasing our system, so refactoring is seperated
+              since we are in the middle of releasing our system,<br/>
+              we want to do our refactoring in a separate <b>branch</b><br/>
+              this is just another pointer to our current commit
             </aside>
           </section>
           <section data-menu-title="checkout -b - repo">
             <img class="stretch" src="demo/img/second-branch.png"/>
+            <aside class="notes">
+              a <b>branch</b> is just another <b>pointer to a commit</b><br/>
+              the current commit is identified by three pointers<br/>
+              <ul>
+                <li>master (branch)</li>
+                <li>refactoring (branch)</li>
+                <li>v0.2 (tag)</li>
+              </ul>
+              <i>compare with previous graph</i>
+            </aside>
           </section>
         </section>
 
         <section>
           <section data-menu-title="git mv">
             <pre><code class="shell" data-sample="demo/transcript/refactoring-done.shell"></code></pre>
+            <aside class="notes">
+              <b>refactoring</b><br/>
+              for future greetings, we create a subdir and<br/>
+              make a copy of our welcome text<br/>
+              for now, both files are identical
+            </aside>
           </section>
           <section data-menu-title="mv - repo">
             <img class="stretch" src="demo/img/refactoring-done.png"/>
+            <aside class="notes">
+              thanks to content addressability, the copied file is only stored once
+            </aside>
           </section>
         </section>
 
@@ -266,12 +308,17 @@
           <section data-menu-title="git tag -m">
             <pre><code class="shell" data-sample="demo/transcript/production-tag.shell"></code></pre>
             <aside class="notes">
-              despite the fact that we are currently in the middle of refactoring,
+              despite the fact that we are currently in the middle of a huge refactoring,
               we can still release our RC v0.2 as Version 1.0 of our system
             </aside>
           </section>
           <section data-menu-title="tag -m - repo">
             <img class="stretch" src="demo/img/production-tag.png"/>
+            <aside class="notes">
+              our production tag is more than a simple reference,<br/>
+              since we supplied a comment (git adds the tagger and date)<br/>
+              we created an <b>annotated tag</b>
+            </aside>
           </section>
         </section>
 
@@ -323,13 +370,17 @@
           <h2>Let's do another project</h2>
           <aside class="notes">
             some more concepts for tags and branches,<br/>
-            esp. rebasing and fast-forward<br/>
+            esp. <b>rebasing</b> and <b>fast-forward</b><br/>
           </aside>
         </section>
 
         <section>
           <section data-menu-title="2nd project - init">
             <pre><code class="shell" data-sample="demo/transcript2/first-release.shell"></code></pre>
+            <aside class="notes">
+              we create out two text files again<br/>
+              note that our hello world get's (of course!) the <b>same hash</b><br/>
+            </aside>
           </section>
           <section data-menu-title="2nd project - init - repo">
             <img class="stretch" src="demo/img2/first-release.png"/>
@@ -339,6 +390,9 @@
         <section>
           <section data-menu-title="2nd project - feature">
             <pre><code class="shell" data-sample="demo/transcript2/feature-branch.shell"></code></pre>
+            <aside class="notes">
+              do some work in a <b>feature branch</b>
+            </aside>
           </section>
           <section data-menu-title="2nd project - feature - repo">
             <img class="stretch" src="demo/img2/feature-branch.png"/>
@@ -348,23 +402,35 @@
         <section>
           <section data-menu-title="2nd project - master">
             <pre><code class="shell" data-sample="demo/transcript2/further-development.shell"></code></pre>
+            <aside class="notes">
+              parallel changes in our master branch
+            </aside>
           </section>
           <section data-menu-title="2nd project - master - repo">
             <img class="stretch" src="demo/img2/further-development.png"/>
+            <aside class="notes">
+              our feature branch is based on tag 0.1<br/>
+              the master branch evolved to tag 0.2<br/>
+            </aside>
           </section>
         </section>
 
         <section>
           <section data-menu-title="git rebase">
             <pre><code class="shell" data-sample="demo/transcript2/rebase.shell"></code></pre>
+            <aside class="notes">
+              in order to get the changes from master,<br/>
+              we <b>rebase</b> our feature branch
+            </aside>
           </section>
           <section data-menu-title="rebase - repo">
             <img class="stretch" src="demo/img2/rebase.png"/>
             <aside class="notes">
               our previous commit was based on 0.1, now we are based on 0.2<br/>
-              with the rebase, we get the new version of bye.txt from the master branch,<br/>
-              but keep our new version of hello.txt<br/>
-              the previous commit is now obsolete
+              with the rebase, we got the new version of bye.txt from the master branch,<br/>
+              but kept our new version of hello.txt<br/>
+              the previous commit is now obsolete and orphaned<br/>
+              (but easily recovered through the <b>reflog</b>)
             </aside>
           </section>
         </section>
@@ -372,11 +438,16 @@
         <section>
           <section data-menu-title="git merge">
             <pre><code class="shell" data-sample="demo/transcript2/merge-it.shell"></code></pre>
+            <aside class="notes">
+              next we merge our feature to the master branch
+            </aside>
           </section>
           <section data-menu-title="merge - repo">
             <img class="stretch" src="demo/img2/merge-it.png"/>
             <aside class="notes">
-              the only thing that changed is the master ref
+              the only thing that changed is the master ref,<br/>
+              since through the rebase, our feature commit is a direct successor of the current master branch<br/>
+              <i>compare with the previous graph</i>
             </aside>
           </section>
         </section>
@@ -392,13 +463,16 @@
         <section>
           <section data-menu-title="git fetch">
              <pre><code class="shell" data-sample="demo/transcript2/fetch-the-other-repo.shell"></code></pre>
+            <aside class="notes">
+              let's <b>fetch</b> our previous work
+            </aside>
           </section>
           <section data-menu-title="fetch - repo">
             <img class="stretch" src="demo/img2/fetch-the-other-repo.png"/>
             <aside class="notes">
               got everything from the first demo<br/>
               nothing is reachable<br/>
-              identical files are common, thanks to content addressing<br/>
+              identical <b>files</b>, <b>trees</b> and <b>commits</b> are common to both graphs, thanks to content addressing<br/>
             </aside>
           </section>
         </section>
@@ -406,11 +480,15 @@
         <section>
           <section data-menu-title="git branch FETCH_HEAD">
              <pre><code class="shell" data-sample="demo/transcript2/awake-the-other-repo.shell"></code></pre>
+            <aside class="notes">
+              give new graph a name by creating a new branch
+            </aside>
           </section>
           <section data-menu-title="branch FETCH_HEAD - repo">
             <img class="stretch" src="demo/img2/awake-the-other-repo.png"/>
             <aside class="notes">
-              now everything is visible because the new branch points to it
+              now everything is visible because the new branch points to it<br/>
+              <b>a branch is just the name of a commit!</b>
             </aside>
           </section>
         </section>
@@ -418,6 +496,9 @@
         <section>
           <section data-menu-title="git merge (unrelated>)">
              <pre><code class="shell" data-sample="demo/transcript2/merge-the-other-repo.shell"></code></pre>
+            <aside class="notes">
+              let's do something crazy...
+            </aside>
           </section>
           <section data-menu-title="merge (unrelated>) - repo">
             <img class="stretch" src="demo/img2/merge-the-other-repo.png"/>
