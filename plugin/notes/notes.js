@@ -23,7 +23,7 @@ var RevealNotes = (function() {
 		if( !notesFilePath ) {
 			var jsFileLocation = document.querySelector('script[src$="notes.js"]').src;  // this js file path
 			jsFileLocation = jsFileLocation.replace(/notes\.js(\?.*)?$/, '');   // the js folder path
-			notesFilePath = jsFileLocation + 'notes.html';
+			notesFilePath = jsFileLocation + 'notes/index.html';
 		}
 
 		notesPopup = window.open( notesFilePath, 'reveal.js - Notes', 'width=1100,height=700' );
