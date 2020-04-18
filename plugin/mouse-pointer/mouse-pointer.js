@@ -20,7 +20,7 @@
 		body.appendChild(tail)
 		setKeyboards()
 		if (window.Reveal.registerKeyboardShortcut) {
-			Reveal.registerKeyboardShortcut('M', 'Toggle Mouse Pointer');
+			Reveal.registerKeyboardShortcut('X', 'Toggle Mouse Pointer');
 		}
 	}
 	
@@ -42,7 +42,7 @@
 	function setKeyboards(params) {
 		document.addEventListener('mousemove', mouse_pointing)
 		document.addEventListener('keydown', function (event) {
-                        // bind to 'x'
+                        // bind to 'X'
 			if (event.keyCode === 88) {
 				event.preventDefault()
 				toggleBind = !toggleBind
